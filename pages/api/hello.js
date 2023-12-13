@@ -4,6 +4,7 @@
 
 
 import mysql from 'mysql';
+import axios from 'axios';
 
 // const { DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD } = process.env;
 
@@ -34,11 +35,25 @@ export const query = (sql, values) => {
 };
 
 
+// export default async function handler(req, res) {
+//   if (req.method === 'GET') {
+//     // Handle GET request (Read)
+//     try {
+//       const results = await query('SELECT * FROM usersingup');
+//       return res.json(results);
+//     } catch (error) {
+//       return res.status(500).json({ message: 'Error fetching tasks', error });
+//     }
+//   }   
+// }
+
+
 export default async function handler(req, res) {
-  if (req.method === 'GET') {
+  if (req.method === 'POST') {
     // Handle GET request (Read)
+    const { userName, password, email,phoneno,company } = req.body;
     try {
-      const results = await query('SELECT * FROM usersingup');
+      const results = await query(`INSERT INTO usersingup (username, password,email,phoneno,company,verificationtoken) VALUES ('${userName}', '${password}', '${email}','${phoneno}','${company}','${verificationToken}')`);
       return res.json(results);
     } catch (error) {
       return res.status(500).json({ message: 'Error fetching tasks', error });

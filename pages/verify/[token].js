@@ -7,20 +7,20 @@ const VerifyEmail = () => {
   const { token } = router.query;
   const [verificationStatus, setVerificationStatus] = useState(null);
 
-  useEffect(() => {
-    const verifyUser = async () => {
-      try {
-        const response = await axios.get(`/api/verifyEmail?token=${token}`);
-        setVerificationStatus(response.data.message);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
+  // useEffect(() => {
+  //   const verifyUser = async () => {
+  //     try {
+  //       const response = await axios.get(`/api/verifyEmail?token=${token}`);
+  //       setVerificationStatus(response.data.message);
+  //     } catch (error) {
+  //       console.error('Error:', error);
+  //     }
+  //   };
 
-    if (token) {
-      verifyUser();
-    }
-  }, [token]);
+  //   if (token) {
+  //     verifyUser();
+  //   }
+  // }, [token]);
 
   return (
     <div>

@@ -39,14 +39,14 @@ const handleSubmit = async(e) => {
       }
 
       try {
-        const response = await axios.post('http://localhost:4000/signup', singupdata);
+        const response = await axios.post('http://localhost:3000/api/hello', singupdata);
         console.log(response.data);
       } catch (error) {
         console.error('Error:', error);
       } 
       const otp = 1111
       
-      router.push(`./verify/${otp}`)
+    //   router.push(`./verify/${otp}`)
 
   }
 
