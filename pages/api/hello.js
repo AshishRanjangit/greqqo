@@ -7,11 +7,18 @@ import mysql from 'mysql';
 
 // const { DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD } = process.env;
 
-const db = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "greqqodatabase"
+// const db = mysql.createPool({
+//   host: "localhost",
+//   user: "root",
+//   password: "",
+//   database: "greqqodatabase"
+// });
+
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 export const query = (sql, values) => {
