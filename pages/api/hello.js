@@ -35,17 +35,17 @@ export const query = (sql, values) => {
 };
 
 
-// export default async function handler(req, res) {
-//   if (req.method === 'GET') {
-//     // Handle GET request (Read)
-//     try {
-//       const results = await query('SELECT * FROM usersingup');
-//       return res.json(results);
-//     } catch (error) {
-//       return res.status(500).json({ message: 'Error fetching tasks', error });
-//     }
-//   }   
-// }
+export default async function handler(req, res) {
+  if (req.method === 'GET') {
+    // Handle GET request (Read)
+    try {
+      const results = await query('SELECT * FROM category');
+      return res.json(results);
+    } catch (error) {
+      return res.status(500).json({ message: 'Error fetching tasks', error });
+    }
+  }   
+}
 
 
 // export default async function handler(req, res) {
@@ -62,26 +62,26 @@ export const query = (sql, values) => {
 // }
 
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method Not Allowed' });
-  }
+// export default async function handler(req, res) {
+//   if (req.method !== 'POST') {
+//     return res.status(405).json({ message: 'Method Not Allowed' });
+//   }
 
-  const { userName, password, email,phoneno,company } = req.body;
+//   const { userName, password, email,phoneno,company } = req.body;
 
-  // if (!userName || !email) {
-  //   return res.status(400).json({ message: 'Name and email are required' });
-  // }
+//   // if (!userName || !email) {
+//   //   return res.status(400).json({ message: 'Name and email are required' });
+//   // }
 
-  const connection = await connect();
+//   const connection = await connect();
 
-  try {
-    await connection.query(`INSERT INTO usersingup (username, password,email,phoneno,company)
-     VALUES ('${userName}', '${password}', '${email}','${phoneno}','${company}')`);
-    return res.status(200).json({ message: 'User created successfully' });
-  } catch (error) {
-    return res.status(500).json({ message: 'Internal Server Error' });
-  } finally {
-    await connection.end();
-  }
-}
+//   try {
+//     await connection.query(`INSERT INTO usersingup (username, password,email,phoneno,company)
+//      VALUES ('${userName}', '${password}', '${email}','${phoneno}','${company}')`);
+//     return res.status(200).json({ message: 'User created successfully' });
+//   } catch (error) {
+//     return res.status(500).json({ message: 'Internal Server Error' });
+//   } finally {
+//     await connection.end();
+//   }
+// }

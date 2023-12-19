@@ -23,13 +23,14 @@ const Login = () => {
 
 
     const handleSubmit = async (e) => {
+        console.log(logindata.email);
         e.preventDefault();
         // router.push('./user/11')
         try {
             const response = await axios.post('http://localhost:4000/login', logindata);
 
             if (response.status === 200) {
-                router.push('./user/11')
+                router.push(`./user/${logindata.email}`)
             } else {
                 alert('Invalid credentials');
             }
@@ -45,7 +46,7 @@ const Login = () => {
 
     return (
         <>
-            <div className="container-fluid p-0 overflow-hidden ">
+            <div className="container p-0 overflow-hidden ">
                 <div className="row">
                     <div className="col-lg-12 ">
                         <div className="form_div">
@@ -71,4 +72,4 @@ const Login = () => {
         </>
     )
 }
-export default Login
+export default Login;
