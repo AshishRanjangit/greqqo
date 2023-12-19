@@ -39,7 +39,7 @@ const handleSubmit = async(e) => {
       }
 
       try {
-        const response = await axios.post('http://localhost:3000/api/hello', singupdata);
+        const response = await axios.post('http://localhost:4000/signup', singupdata);
         console.log(response.data);
       } catch (error) {
         console.error('Error:', error);
